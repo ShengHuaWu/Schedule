@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B9D9A861EEF185400FE10EE /* ClassList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9B9D9A851EEF185400FE10EE /* ClassList.graphql */; };
+		9B9D9A891EEF188000FE10EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D9A881EEF188000FE10EE /* API.swift */; };
 		9BA17FC01EEC5D4D00854718 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA17FBF1EEC5D4D00854718 /* AppDelegate.swift */; };
 		9BA17FC21EEC5D4D00854718 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA17FC11EEC5D4D00854718 /* ViewController.swift */; };
 		9BA17FC51EEC5D4D00854718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA17FC31EEC5D4D00854718 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B9D9A851EEF185400FE10EE /* ClassList.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ClassList.graphql; path = ClassList/ClassList.graphql; sourceTree = "<group>"; };
+		9B9D9A881EEF188000FE10EE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9BA17FBC1EEC5D4D00854718 /* Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BA17FBF1EEC5D4D00854718 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BA17FC11EEC5D4D00854718 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B9D9A871EEF185E00FE10EE /* ClassList */ = {
+			isa = PBXGroup;
+			children = (
+				9B9D9A851EEF185400FE10EE /* ClassList.graphql */,
+			);
+			name = ClassList;
+			sourceTree = "<group>";
+		};
 		9BA17FB31EEC5D4D00854718 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +70,8 @@
 		9BA17FBE1EEC5D4D00854718 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				9B9D9A881EEF188000FE10EE /* API.swift */,
+				9B9D9A871EEF185E00FE10EE /* ClassList */,
 				9BA17FBF1EEC5D4D00854718 /* AppDelegate.swift */,
 				9BA17FC11EEC5D4D00854718 /* ViewController.swift */,
 				9BA17FC31EEC5D4D00854718 /* Main.storyboard */,
@@ -137,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B9D9A861EEF185400FE10EE /* ClassList.graphql in Resources */,
 				9BA17FCA1EEC5D4D00854718 /* LaunchScreen.storyboard in Resources */,
 				9BA17FC71EEC5D4D00854718 /* Assets.xcassets in Resources */,
 				9BA17FC51EEC5D4D00854718 /* Main.storyboard in Resources */,
@@ -183,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BA17FC21EEC5D4D00854718 /* ViewController.swift in Sources */,
+				9B9D9A891EEF188000FE10EE /* API.swift in Sources */,
 				9BA17FC01EEC5D4D00854718 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

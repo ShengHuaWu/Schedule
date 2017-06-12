@@ -1,0 +1,6 @@
+query AllClasses {
+    allClasses {
+        id
+        title
+    }
+}
