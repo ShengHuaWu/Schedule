@@ -1,6 +1,10 @@
+fragment ClassDetails on Class {
+    id
+    title
+}
+
 query AllClasses {
     allClasses {
-        id
-        title
+        ...ClassDetails
     }
 }
