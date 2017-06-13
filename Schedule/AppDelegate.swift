@@ -18,13 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let allClassesQuery = AllClassesQuery()
-        apollo.fetch(query: allClassesQuery) { (result, error) in
-            guard let classes = result?.data?.allClasses else { return }
-            
-            classes.forEach { print($0.fragments.classDetails) }
-        }
-        
         return true
     }
 }
