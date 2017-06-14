@@ -15,6 +15,7 @@
 		9BA17FC51EEC5D4D00854718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA17FC31EEC5D4D00854718 /* Main.storyboard */; };
 		9BA17FC71EEC5D4D00854718 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BA17FC61EEC5D4D00854718 /* Assets.xcassets */; };
 		9BA17FCA1EEC5D4D00854718 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA17FC81EEC5D4D00854718 /* LaunchScreen.storyboard */; };
+		9BB2C2DB1EF1B42F0022454F /* TeacherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB2C2DA1EF1B42F0022454F /* TeacherView.swift */; };
 		9BEC65131EEDA624006910F4 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEC65121EEDA624006910F4 /* Apollo.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		9BA17FC61EEC5D4D00854718 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BA17FC91EEC5D4D00854718 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BA17FCB1EEC5D4D00854718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BB2C2DA1EF1B42F0022454F /* TeacherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeacherView.swift; path = ClassDetails/TeacherView.swift; sourceTree = "<group>"; };
 		9BEC65121EEDA624006910F4 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,6 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4D87621EF08582008EB9CD /* ClassDetialsViewController.swift */,
+				9BB2C2DA1EF1B42F0022454F /* TeacherView.swift */,
 			);
 			name = ClassDetails;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4D87631EF08582008EB9CD /* ClassDetialsViewController.swift in Sources */,
+				9BB2C2DB1EF1B42F0022454F /* TeacherView.swift in Sources */,
 				9B4D87611EF084A1008EB9CD /* ClassListViewController.swift in Sources */,
 				9B9D9A891EEF188000FE10EE /* API.swift in Sources */,
 				9BA17FC01EEC5D4D00854718 /* AppDelegate.swift in Sources */,

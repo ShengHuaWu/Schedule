@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Class List View Controller
 final class ClassListViewController: UITableViewController {
     // MARK: Propertiess
     fileprivate let cellIdentifier = "ClassCell"
@@ -33,6 +34,8 @@ extension ClassListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        cell.textLabel?.text = "Class Title"
+        cell.detailTextLabel?.text = "Teacher name / 10 students"
         return cell
     }
 }
