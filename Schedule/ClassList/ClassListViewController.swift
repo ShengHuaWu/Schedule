@@ -13,18 +13,15 @@ final class ClassListViewController: UITableViewController {
     // MARK: Propertiess
     fileprivate let cellIdentifier = "ClassCell"
     
-    var viewModel: ClassListViewModel?
+    var viewModel: ClassListViewModel! {
+        didSet {
+            viewModel.fetchClasses()
+        }
+    }
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let allClassesQuery = AllClassesQuery()
-        apollo.fetch(query: allClassesQuery) { (result, error) in
-            guard let classes = result?.data?.allClasses else { return }
-            
-            classes.forEach { print($0.fragments.classDetails) }
-        }
+        super.viewDidLoad()        
     }
     
     // MARK: Public Methods
@@ -36,7 +33,7 @@ final class ClassListViewController: UITableViewController {
 // MARK: - Table View Data Source
 extension ClassListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.state.count ?? 0
+        return viewModel == nil ? 0 : viewModel.state.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Apollo
 
 final class ClassListViewModel {
     // MARK: Properties
@@ -17,9 +18,22 @@ final class ClassListViewModel {
     }
     
     private let callback: (State<[ClassDetails]>) -> ()
+    private let apollo: ApolloClient
     
     // MARK: Designated Initializer
-    init(callback: @escaping (State<[ClassDetails]>) -> ()) {
-        self.callback = callback
+    init(apollo: ApolloClient, callback: @escaping (State<[ClassDetails]>) -> ()) {
+        self.apollo = apollo
+        self.callback = callback        
+    }
+    
+    // MARK: Public Methods
+    func fetchClasses() {
+        let allClassesQuery = AllClassesQuery()
+        apollo.fetch(query: allClassesQuery) { (result, error) in
+            guard let classes = result?.data?.allClasses else { return }
+
+            let classDetails = classes.map { $0.fragments.classDetails }
+            self.state = .normal(classDetails)            
+        }
     }
 }

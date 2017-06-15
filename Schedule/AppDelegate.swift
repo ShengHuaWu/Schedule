@@ -22,10 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Application Delegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-        let classListVC = navigationController.topViewController as! ClassListViewController
-        router.configure(classListVC, in: navigationController)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        router.configure(window)
         
         return true
     }
@@ -33,8 +31,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: - Router
 struct Router {
+    func configure(_ window: UIWindow?) {        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = storyboard.instantiateViewController(withIdentifier: "Initial Navigation Controller") as! UINavigationController
+        let classListVC = navigationController.viewControllers.first as! ClassListViewController
+        configure(classListVC, in: navigationController)
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
+    
     func configure(_ classListViewController: ClassListViewController, in navigationController: UINavigationController) {
-        let viewModel = ClassListViewModel { [weak viewController = classListViewController] (state) in
+        classListViewController.title = "Classes"
+        
+        let viewModel = ClassListViewModel(apollo: apollo) { [weak viewController = classListViewController] (state) in
             viewController.flatMap { $0.updateUI(with: state) }
         }
         classListViewController.viewModel = viewModel
