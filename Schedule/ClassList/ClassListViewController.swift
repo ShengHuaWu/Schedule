@@ -13,6 +13,8 @@ final class ClassListViewController: UITableViewController {
     // MARK: Propertiess
     fileprivate let cellIdentifier = "ClassCell"
     
+    var viewModel: ClassListViewModel?
+    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +26,17 @@ final class ClassListViewController: UITableViewController {
             classes.forEach { print($0.fragments.classDetails) }
         }
     }
+    
+    // MARK: Public Methods
+    func updateUI(with state: State<[ClassDetails]>) {
+        tableView.reloadData()
+    }
 }
 
 // MARK: - Table View Data Source
 extension ClassListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel?.state.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

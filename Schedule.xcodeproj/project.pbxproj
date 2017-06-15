@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9B4D87611EF084A1008EB9CD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4D87601EF084A1008EB9CD /* ClassListViewController.swift */; };
 		9B4D87631EF08582008EB9CD /* ClassDetialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4D87621EF08582008EB9CD /* ClassDetialsViewController.swift */; };
+		9B8F46CA1EF322C50069AF7C /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F46C91EF322C50069AF7C /* State.swift */; };
+		9B8F46CD1EF323C70069AF7C /* ClassListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F46CC1EF323C70069AF7C /* ClassListViewModel.swift */; };
 		9B9D9A861EEF185400FE10EE /* ClassList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9B9D9A851EEF185400FE10EE /* ClassList.graphql */; };
 		9B9D9A891EEF188000FE10EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D9A881EEF188000FE10EE /* API.swift */; };
 		9BA17FC01EEC5D4D00854718 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA17FBF1EEC5D4D00854718 /* AppDelegate.swift */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		9B4D87601EF084A1008EB9CD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListViewController.swift; path = ClassList/ClassListViewController.swift; sourceTree = "<group>"; };
 		9B4D87621EF08582008EB9CD /* ClassDetialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassDetialsViewController.swift; path = ClassDetails/ClassDetialsViewController.swift; sourceTree = "<group>"; };
+		9B8F46C91EF322C50069AF7C /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = State.swift; path = Common/State.swift; sourceTree = "<group>"; };
+		9B8F46CC1EF323C70069AF7C /* ClassListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListViewModel.swift; path = ClassList/ClassListViewModel.swift; sourceTree = "<group>"; };
 		9B9D9A851EEF185400FE10EE /* ClassList.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ClassList.graphql; path = ClassList/ClassList.graphql; sourceTree = "<group>"; };
 		9B9D9A881EEF188000FE10EE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9BA17FBC1EEC5D4D00854718 /* Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,11 +59,20 @@
 			name = ClassDetails;
 			sourceTree = "<group>";
 		};
+		9B8F46CB1EF322C90069AF7C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9B8F46C91EF322C50069AF7C /* State.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		9B9D9A871EEF185E00FE10EE /* ClassList */ = {
 			isa = PBXGroup;
 			children = (
 				9B9D9A851EEF185400FE10EE /* ClassList.graphql */,
 				9B4D87601EF084A1008EB9CD /* ClassListViewController.swift */,
+				9B8F46CC1EF323C70069AF7C /* ClassListViewModel.swift */,
 			);
 			name = ClassList;
 			sourceTree = "<group>";
@@ -87,9 +100,10 @@
 				9B9D9A881EEF188000FE10EE /* API.swift */,
 				9B4D87641EF08586008EB9CD /* ClassDetails */,
 				9B9D9A871EEF185E00FE10EE /* ClassList */,
+				9B8F46CB1EF322C90069AF7C /* Common */,
 				9BA17FBF1EEC5D4D00854718 /* AppDelegate.swift */,
-				9BA17FC31EEC5D4D00854718 /* Main.storyboard */,
 				9BA17FC61EEC5D4D00854718 /* Assets.xcassets */,
+				9BA17FC31EEC5D4D00854718 /* Main.storyboard */,
 				9BA17FC81EEC5D4D00854718 /* LaunchScreen.storyboard */,
 				9BA17FCB1EEC5D4D00854718 /* Info.plist */,
 			);
@@ -216,6 +230,8 @@
 				9B4D87611EF084A1008EB9CD /* ClassListViewController.swift in Sources */,
 				9B9D9A891EEF188000FE10EE /* API.swift in Sources */,
 				9BA17FC01EEC5D4D00854718 /* AppDelegate.swift in Sources */,
+				9B8F46CD1EF323C70069AF7C /* ClassListViewModel.swift in Sources */,
+				9B8F46CA1EF322C50069AF7C /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
