@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Application Delegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        router.configure(window)
+        let navigationController = window?.rootViewController as! UINavigationController
+        let classListVC = navigationController.viewControllers.first as! ClassListViewController
+        router.configure(classListVC, in: navigationController)
         
         return true
     }
@@ -31,16 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: - Router
 struct Router {
-    func configure(_ window: UIWindow?) {        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let navigationController = storyboard.instantiateViewController(withIdentifier: "Initial Navigation Controller") as! UINavigationController
-        let classListVC = navigationController.viewControllers.first as! ClassListViewController
-        configure(classListVC, in: navigationController)
-        
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-    }
-    
     func configure(_ classListViewController: ClassListViewController, in navigationController: UINavigationController) {
         classListViewController.title = "Classes"
         
