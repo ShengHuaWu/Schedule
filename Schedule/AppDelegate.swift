@@ -39,6 +39,24 @@ struct Router {
             viewController.flatMap { $0.updateUI(with: state) }
         }
         classListViewController.viewModel = viewModel
+        
+        classListViewController.presentClassDetails = { (classDetails) in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let classDetailsVC = storyboard.instantiateViewController(withIdentifier: "ClassDetails") as! ClassDetialsViewController
+            
+            self.configure(classDetailsVC, with: classDetails)
+            
+            navigationController.pushViewController(classDetailsVC, animated: true)
+        }
+    }
+    
+    func configure(_ classDetailsViewController: ClassDetialsViewController, with classDetails: ClassDetails) {
+        classDetailsViewController.title = classDetails.title
+        
+        let viewModel = ClassDetailsViewModel(apollo: apollo) { (state) in
+            
+        }
+        classDetailsViewController.viewModel = viewModel
     }
 }
 

@@ -13,6 +13,8 @@ final class ClassDetialsViewController: UITableViewController {
     // MARK: Properties
     fileprivate let cellIdentifier = "StudentCell"
     
+    var viewModel: ClassDetailsViewModel!
+    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

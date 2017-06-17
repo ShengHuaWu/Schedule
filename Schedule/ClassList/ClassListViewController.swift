@@ -19,6 +19,8 @@ final class ClassListViewController: UITableViewController {
         }
     }
     
+    var presentClassDetails: ((ClassDetails) -> ())?
+    
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -41,5 +43,11 @@ extension ClassListViewController {
         cell.textLabel?.text = "Class Title"
         cell.detailTextLabel?.text = "Teacher name / 10 students"
         return cell
+    }
+}
+
+extension ClassListViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.state.element(at: indexPath.row).flatMap { presentClassDetails?($0) }
     }
 }

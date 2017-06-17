@@ -13,6 +13,7 @@
 		9B8F46CD1EF323C70069AF7C /* ClassListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F46CC1EF323C70069AF7C /* ClassListViewModel.swift */; };
 		9B9D9A861EEF185400FE10EE /* ClassList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9B9D9A851EEF185400FE10EE /* ClassList.graphql */; };
 		9B9D9A891EEF188000FE10EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D9A881EEF188000FE10EE /* API.swift */; };
+		9B9EF0D61EF57420004306AB /* ClassDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EF0D51EF57420004306AB /* ClassDetailsViewModel.swift */; };
 		9BA17FC01EEC5D4D00854718 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA17FBF1EEC5D4D00854718 /* AppDelegate.swift */; };
 		9BA17FC51EEC5D4D00854718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA17FC31EEC5D4D00854718 /* Main.storyboard */; };
 		9BA17FC71EEC5D4D00854718 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BA17FC61EEC5D4D00854718 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		9B8F46CC1EF323C70069AF7C /* ClassListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListViewModel.swift; path = ClassList/ClassListViewModel.swift; sourceTree = "<group>"; };
 		9B9D9A851EEF185400FE10EE /* ClassList.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ClassList.graphql; path = ClassList/ClassList.graphql; sourceTree = "<group>"; };
 		9B9D9A881EEF188000FE10EE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9B9EF0D51EF57420004306AB /* ClassDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassDetailsViewModel.swift; path = ClassDetails/ClassDetailsViewModel.swift; sourceTree = "<group>"; };
 		9BA17FBC1EEC5D4D00854718 /* Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BA17FBF1EEC5D4D00854718 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BA17FC41EEC5D4D00854718 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4D87621EF08582008EB9CD /* ClassDetialsViewController.swift */,
+				9B9EF0D51EF57420004306AB /* ClassDetailsViewModel.swift */,
 				9BB2C2DA1EF1B42F0022454F /* TeacherView.swift */,
 			);
 			name = ClassDetails;
@@ -231,6 +234,7 @@
 				9B9D9A891EEF188000FE10EE /* API.swift in Sources */,
 				9BA17FC01EEC5D4D00854718 /* AppDelegate.swift in Sources */,
 				9B8F46CD1EF323C70069AF7C /* ClassListViewModel.swift in Sources */,
+				9B9EF0D61EF57420004306AB /* ClassDetailsViewModel.swift in Sources */,
 				9B8F46CA1EF322C50069AF7C /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
