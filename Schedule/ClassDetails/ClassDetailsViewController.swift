@@ -9,11 +9,15 @@
 import UIKit
 
 // MARK: - Class Details View Controller
-final class ClassDetialsViewController: UITableViewController {
+final class ClassDetailsViewController: UITableViewController {
     // MARK: Properties
     fileprivate let cellIdentifier = "StudentCell"
     
-    var viewModel: ClassDetailsViewModel!
+    var viewModel: ClassDetailsViewModel! {
+        didSet {
+            viewModel.fetchClassDetails()
+        }
+    }
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -23,7 +27,7 @@ final class ClassDetialsViewController: UITableViewController {
 
 
 // MARK: - Table View Data Source
-extension ClassDetialsViewController {
+extension ClassDetailsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }

@@ -11,20 +11,31 @@ import Apollo
 
 final class ClassDetailsViewModel {
     // MARK: Properties
-    private(set) var state: State<ClassDetails> = .empty {
+    private(set) var state: State<ClassDetailsWithStudents> = .empty {
         didSet {
             callback(state)
         }
     }
     
-    private let callback: (State<ClassDetails>) -> ()
+    private let callback: (State<ClassDetailsWithStudents>) -> ()
     private let apollo: ApolloClient
+    private let classID: GraphQLID
     
     // MARK: Designated Initializer
-    init(apollo: ApolloClient, callback: @escaping (State<ClassDetails>) -> ()) {
+    init(apollo: ApolloClient, classID: GraphQLID, callback: @escaping (State<ClassDetailsWithStudents>) -> ()) {
         self.apollo = apollo
+        self.classID = classID
         self.callback = callback
     }
     
     // MARK: Public Methods
+    func fetchClassDetails() {
+        let classDetailsQuery = ClassDetailsQuery(classId: classID)
+        apollo.fetch(query: classDetailsQuery) { (result, error) in
+            guard let classDetailsWithStudents = result?.data?.class?.fragments.classDetailsWithStudents else { return }
+            print(classDetailsWithStudents)
+            
+            self.state = .normal(classDetailsWithStudents)
+        }
+    }
 }

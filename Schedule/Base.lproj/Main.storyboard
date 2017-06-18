@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="593" y="140"/>
         </scene>
-        <!--Class Detials View Controller-->
+        <!--Class Details View Controller-->
         <scene sceneID="ezR-mh-uZV">
             <objects>
-                <tableViewController storyboardIdentifier="ClassDetails" id="qAM-WT-dGk" customClass="ClassDetialsViewController" customModule="Schedule" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ClassDetails" id="qAM-WT-dGk" customClass="ClassDetailsViewController" customModule="Schedule" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cJz-2t-eHM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

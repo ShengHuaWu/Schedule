@@ -1,0 +1,21 @@
+fragment StudentDetails on Student {
+    id
+    name
+}
+
+fragment ClassDetailsWithStudents on Class {
+    id
+    title
+    teacher {
+        ...TeacherDetails
+    }
+    students {
+        ...StudentDetails
+    }
+}
+
+query ClassDetails($classID: ID!) {
+    class: Class(id: $classID) {
+        ...ClassDetailsWithStudents
+    }
+}

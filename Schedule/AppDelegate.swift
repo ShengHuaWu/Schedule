@@ -42,7 +42,7 @@ struct Router {
         
         classListViewController.presentClassDetails = { (classDetails) in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let classDetailsVC = storyboard.instantiateViewController(withIdentifier: "ClassDetails") as! ClassDetialsViewController
+            let classDetailsVC = storyboard.instantiateViewController(withIdentifier: "ClassDetails") as! ClassDetailsViewController
             
             self.configure(classDetailsVC, with: classDetails)
             
@@ -50,11 +50,11 @@ struct Router {
         }
     }
     
-    func configure(_ classDetailsViewController: ClassDetialsViewController, with classDetails: ClassDetails) {
+    func configure(_ classDetailsViewController: ClassDetailsViewController, with classDetails: ClassDetails) {
         classDetailsViewController.title = classDetails.title
         
-        let viewModel = ClassDetailsViewModel(apollo: apollo) { (state) in
-            
+        let viewModel = ClassDetailsViewModel(apollo: apollo, classID: classDetails.id) { (state) in
+            // TODO: Update UI
         }
         classDetailsViewController.viewModel = viewModel
     }
