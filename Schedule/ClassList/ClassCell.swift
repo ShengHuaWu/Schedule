@@ -13,7 +13,9 @@ class ClassCell: UITableViewCell {
     var classDetails: ClassDetails! {
         didSet {
             textLabel?.text = classDetails.title
-            detailTextLabel?.text = classDetails.teacher?.fragments.teacherDetails.name
+            let name = classDetails.teacher?.fragments.teacherDetails.name ?? ""
+            let count = classDetails.studentsMeta.count
+            detailTextLabel?.text = "teacher: \(name). \(count) students."
         }
     }
 }

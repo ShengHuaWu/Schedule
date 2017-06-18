@@ -71,6 +71,10 @@ public struct ClassDetails: GraphQLNamedFragment {
     "    __typename" +
     "    ...TeacherDetails" +
     "  }" +
+    "  _studentsMeta {" +
+    "    __typename" +
+    "    count" +
+    "  }" +
     "}"
 
   public static let possibleTypes = ["Class"]
@@ -79,12 +83,15 @@ public struct ClassDetails: GraphQLNamedFragment {
   public let id: GraphQLID
   public let title: String
   public let teacher: Teacher?
+  /// Meta information about the query.
+  public let studentsMeta: StudentsMetum
 
   public init(reader: GraphQLResultReader) throws {
     __typename = try reader.value(for: Field(responseName: "__typename"))
     id = try reader.value(for: Field(responseName: "id"))
     title = try reader.value(for: Field(responseName: "title"))
     teacher = try reader.optionalValue(for: Field(responseName: "teacher"))
+    studentsMeta = try reader.value(for: Field(responseName: "_studentsMeta"))
   }
 
   public struct Teacher: GraphQLMappable {
@@ -101,6 +108,16 @@ public struct ClassDetails: GraphQLNamedFragment {
 
     public struct Fragments {
       public let teacherDetails: TeacherDetails
+    }
+  }
+
+  public struct StudentsMetum: GraphQLMappable {
+    public let __typename: String
+    public let count: Int
+
+    public init(reader: GraphQLResultReader) throws {
+      __typename = try reader.value(for: Field(responseName: "__typename"))
+      count = try reader.value(for: Field(responseName: "count"))
     }
   }
 }

@@ -9,6 +9,9 @@ fragment ClassDetails on Class {
     teacher {
         ...TeacherDetails
     }
+    _studentsMeta {
+        count
+    }
 }
 
 query AllClasses {
