@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B4D87611EF084A1008EB9CD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4D87601EF084A1008EB9CD /* ClassListViewController.swift */; };
 		9B4D87631EF08582008EB9CD /* ClassDetialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4D87621EF08582008EB9CD /* ClassDetialsViewController.swift */; };
+		9B88153B1EF6C1A0000EB843 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88153A1EF6C1A0000EB843 /* ClassCell.swift */; };
 		9B8F46CA1EF322C50069AF7C /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F46C91EF322C50069AF7C /* State.swift */; };
 		9B8F46CD1EF323C70069AF7C /* ClassListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F46CC1EF323C70069AF7C /* ClassListViewModel.swift */; };
 		9B9D9A861EEF185400FE10EE /* ClassList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9B9D9A851EEF185400FE10EE /* ClassList.graphql */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		9B4D87601EF084A1008EB9CD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListViewController.swift; path = ClassList/ClassListViewController.swift; sourceTree = "<group>"; };
 		9B4D87621EF08582008EB9CD /* ClassDetialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassDetialsViewController.swift; path = ClassDetails/ClassDetialsViewController.swift; sourceTree = "<group>"; };
+		9B88153A1EF6C1A0000EB843 /* ClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassCell.swift; path = ClassList/ClassCell.swift; sourceTree = "<group>"; };
 		9B8F46C91EF322C50069AF7C /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = State.swift; path = Common/State.swift; sourceTree = "<group>"; };
 		9B8F46CC1EF323C70069AF7C /* ClassListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListViewModel.swift; path = ClassList/ClassListViewModel.swift; sourceTree = "<group>"; };
 		9B9D9A851EEF185400FE10EE /* ClassList.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ClassList.graphql; path = ClassList/ClassList.graphql; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		9B9D9A871EEF185E00FE10EE /* ClassList */ = {
 			isa = PBXGroup;
 			children = (
+				9B88153A1EF6C1A0000EB843 /* ClassCell.swift */,
 				9B9D9A851EEF185400FE10EE /* ClassList.graphql */,
 				9B4D87601EF084A1008EB9CD /* ClassListViewController.swift */,
 				9B8F46CC1EF323C70069AF7C /* ClassListViewModel.swift */,
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B88153B1EF6C1A0000EB843 /* ClassCell.swift in Sources */,
 				9B4D87631EF08582008EB9CD /* ClassDetialsViewController.swift in Sources */,
 				9BB2C2DB1EF1B42F0022454F /* TeacherView.swift in Sources */,
 				9B4D87611EF084A1008EB9CD /* ClassListViewController.swift in Sources */,

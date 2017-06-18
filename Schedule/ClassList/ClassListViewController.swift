@@ -39,9 +39,8 @@ extension ClassListViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = "Class Title"
-        cell.detailTextLabel?.text = "Teacher name / 10 students"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ClassCell
+        viewModel.state.element(at: indexPath.row).flatMap { cell.classDetails = $0 }
         return cell
     }
 }

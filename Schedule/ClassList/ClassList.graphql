@@ -1,6 +1,14 @@
+fragment TeacherDetails on Teacher {
+    id
+    name
+}
+
 fragment ClassDetails on Class {
     id
     title
+    teacher {
+        ...TeacherDetails
+    }
 }
 
 query AllClasses {
