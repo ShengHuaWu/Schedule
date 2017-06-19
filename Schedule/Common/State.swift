@@ -11,6 +11,7 @@ import Foundation
 enum State<T> {
     case normal(T)
     case empty
+    case loading
     case error(Error)
 }
 

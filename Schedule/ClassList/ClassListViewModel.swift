@@ -28,10 +28,12 @@ final class ClassListViewModel {
     
     // MARK: Public Methods
     func fetchClasses() {
+        state = .loading
+        
         let allClassesQuery = AllClassesQuery()
         apollo.fetch(query: allClassesQuery) { (result, error) in
             guard let classes = result?.data?.allClasses else { return }
-
+            
             let classDetails = classes.map { $0.fragments.classDetails }
             self.state = .normal(classDetails)            
         }

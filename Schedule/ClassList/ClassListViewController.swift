@@ -13,22 +13,36 @@ final class ClassListViewController: UITableViewController {
     // MARK: Propertiess
     fileprivate let cellIdentifier = "ClassCell"
     
-    var viewModel: ClassListViewModel! {
-        didSet {
-            viewModel.fetchClasses()
-        }
-    }
+    var viewModel: ClassListViewModel!
     
     var presentClassDetails: ((ClassDetails) -> ())?
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
+        refreshControl?.backgroundColor = .white
+        refreshControl?.addTarget(self, action: #selector(handleRefersh(sender:)), for: .valueChanged)
+        
+        viewModel.fetchClasses()
     }
     
     // MARK: Public Methods
     func updateUI(with state: State<[ClassDetails]>) {
-        tableView.reloadData()
+        switch state {
+        case .loading:
+            refreshControl?.beginRefreshing()
+        case .normal:
+            tableView.reloadData()
+            refreshControl?.endRefreshing()
+        default:
+            refreshControl?.endRefreshing()
+        }
+    }
+    
+    // MARK: Actions
+    func handleRefersh(sender: UIRefreshControl) {
+        viewModel.fetchClasses()
     }
 }
 
