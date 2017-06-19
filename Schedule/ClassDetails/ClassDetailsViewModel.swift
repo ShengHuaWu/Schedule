@@ -30,6 +30,8 @@ final class ClassDetailsViewModel {
     
     // MARK: Public Methods
     func fetchClassDetails() {
+        state = .loading
+        
         let classDetailsQuery = ClassDetailsQuery(classId: classID)
         apollo.fetch(query: classDetailsQuery) { (result, error) in
             guard let classDetailsWithStudents = result?.data?.class?.fragments.classDetailsWithStudents else { return }

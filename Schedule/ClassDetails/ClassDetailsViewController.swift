@@ -13,15 +13,34 @@ final class ClassDetailsViewController: UITableViewController {
     // MARK: Properties
     fileprivate let cellIdentifier = "StudentCell"
     
-    var viewModel: ClassDetailsViewModel! {
-        didSet {
-            viewModel.fetchClassDetails()
-        }
-    }
+    var viewModel: ClassDetailsViewModel!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl?.backgroundColor = .white
+        refreshControl?.addTarget(self, action: #selector(refreshAction(sender:)), for: .valueChanged)
+        
+        viewModel.fetchClassDetails()
+    }
+    
+    // MARK: Public Methods
+    func updateUI(with state: State<ClassDetailsWithStudents>) {
+        switch state {
+        case .loading:
+            refreshControl?.beginRefreshing()
+        case .normal:
+            refreshControl?.endRefreshing()
+            tableView.reloadData()
+        default:
+            refreshControl?.endRefreshing()
+        }
+    }
+    
+    // MARK: Actions
+    func refreshAction(sender: UIRefreshControl) {
+        viewModel.fetchClassDetails()
     }
 }
 

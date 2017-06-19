@@ -22,7 +22,7 @@ final class ClassListViewController: UITableViewController {
         super.viewDidLoad()
         
         refreshControl?.backgroundColor = .white
-        refreshControl?.addTarget(self, action: #selector(handleRefersh(sender:)), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(refershAction(sender:)), for: .valueChanged)
         
         viewModel.fetchClasses()
     }
@@ -41,7 +41,7 @@ final class ClassListViewController: UITableViewController {
     }
     
     // MARK: Actions
-    func handleRefersh(sender: UIRefreshControl) {
+    func refershAction(sender: UIRefreshControl) {
         viewModel.fetchClasses()
     }
 }

@@ -36,7 +36,7 @@ struct Router {
         classListViewController.title = "Classes"
         
         let viewModel = ClassListViewModel(apollo: apollo) { [weak viewController = classListViewController] (state) in
-            viewController.flatMap { $0.updateUI(with: state) }
+            viewController?.updateUI(with: state)
         }
         classListViewController.viewModel = viewModel
         
@@ -53,8 +53,8 @@ struct Router {
     func configure(_ classDetailsViewController: ClassDetailsViewController, with classDetails: ClassDetails) {
         classDetailsViewController.title = classDetails.title
         
-        let viewModel = ClassDetailsViewModel(apollo: apollo, classID: classDetails.id) { (state) in
-            // TODO: Update UI
+        let viewModel = ClassDetailsViewModel(apollo: apollo, classID: classDetails.id) { [weak viewController = classDetailsViewController] (state) in
+            viewController?.updateUI(with: state)
         }
         classDetailsViewController.viewModel = viewModel
     }
