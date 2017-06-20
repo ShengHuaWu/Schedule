@@ -50,6 +50,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="SKO-3Q-1Cx"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="P6Y-3V-28K">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
                             <fragment content="Loading Classes...">
@@ -106,7 +107,7 @@
                             </connections>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StudentCell" textLabel="WkA-93-VeN" style="IBUITableViewCellStyleDefault" id="UP7-KQ-5Oz">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StudentCell" textLabel="WkA-93-VeN" style="IBUITableViewCellStyleDefault" id="UP7-KQ-5Oz" customClass="StudentCell" customModule="Schedule" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="128" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UP7-KQ-5Oz" id="3qA-2o-YO6">
@@ -130,6 +131,7 @@
                         </connections>
                     </tableView>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="odv-9F-fBh">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
                             <fragment content="Loading Class Details ...">
@@ -140,6 +142,9 @@
                             </fragment>
                         </attributedString>
                     </refreshControl>
+                    <connections>
+                        <outlet property="teacherView" destination="T4x-cp-UvW" id="IFC-GO-uBf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0o-Ij-7F5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -30,3 +30,23 @@ extension State where T: RangeReplaceableCollection {
         }
     }
 }
+
+extension State where T == ClassDetailsWithStudents {
+    var teacher: TeacherDetails? {
+        switch self {
+        case let .normal(details):
+            return details.teacher?.fragments.teacherDetails
+        default:
+            return nil
+        }
+    }
+    
+    var students: [StudentDetails]? {
+        switch self {
+        case let .normal(details):
+            return details.students.flatMap { $0.map { $0.fragments.studentDetails } }
+        default:
+            return nil
+        }
+    }
+}

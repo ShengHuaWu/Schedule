@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B2A84401EF9C1C60017494B /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A843F1EF9C1C60017494B /* StudentCell.swift */; };
 		9B4D87611EF084A1008EB9CD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4D87601EF084A1008EB9CD /* ClassListViewController.swift */; };
 		9B4D87631EF08582008EB9CD /* ClassDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4D87621EF08582008EB9CD /* ClassDetailsViewController.swift */; };
 		9B88153B1EF6C1A0000EB843 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88153A1EF6C1A0000EB843 /* ClassCell.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B2A843F1EF9C1C60017494B /* StudentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentCell.swift; path = ClassDetails/StudentCell.swift; sourceTree = "<group>"; };
 		9B4D87601EF084A1008EB9CD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListViewController.swift; path = ClassList/ClassListViewController.swift; sourceTree = "<group>"; };
 		9B4D87621EF08582008EB9CD /* ClassDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassDetailsViewController.swift; path = ClassDetails/ClassDetailsViewController.swift; sourceTree = "<group>"; };
 		9B88153A1EF6C1A0000EB843 /* ClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassCell.swift; path = ClassList/ClassCell.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				9B88153C1EF6C7E5000EB843 /* ClassDetails.graphql */,
 				9B4D87621EF08582008EB9CD /* ClassDetailsViewController.swift */,
 				9B9EF0D51EF57420004306AB /* ClassDetailsViewModel.swift */,
+				9B2A843F1EF9C1C60017494B /* StudentCell.swift */,
 				9BB2C2DA1EF1B42F0022454F /* TeacherView.swift */,
 			);
 			name = ClassDetails;
@@ -240,6 +243,7 @@
 				9BB2C2DB1EF1B42F0022454F /* TeacherView.swift in Sources */,
 				9B4D87611EF084A1008EB9CD /* ClassListViewController.swift in Sources */,
 				9B9D9A891EEF188000FE10EE /* API.swift in Sources */,
+				9B2A84401EF9C1C60017494B /* StudentCell.swift in Sources */,
 				9BA17FC01EEC5D4D00854718 /* AppDelegate.swift in Sources */,
 				9B8F46CD1EF323C70069AF7C /* ClassListViewModel.swift in Sources */,
 				9B9EF0D61EF57420004306AB /* ClassDetailsViewModel.swift in Sources */,

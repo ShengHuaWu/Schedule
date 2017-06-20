@@ -12,4 +12,10 @@ class TeacherView: UIView {
     // MARK: Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var teacher: TeacherDetails! {
+        didSet {
+            nameLabel.text = teacher.name
+        }
+    }
 }

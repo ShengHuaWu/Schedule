@@ -12,6 +12,7 @@ import UIKit
 final class ClassDetailsViewController: UITableViewController {
     // MARK: Properties
     fileprivate let cellIdentifier = "StudentCell"
+    @IBOutlet weak var teacherView: TeacherView!
     
     var viewModel: ClassDetailsViewModel!
     
@@ -33,6 +34,8 @@ final class ClassDetailsViewController: UITableViewController {
         case .normal:
             refreshControl?.endRefreshing()
             tableView.reloadData()
+            
+            teacherView.teacher = viewModel.state.teacher
         default:
             refreshControl?.endRefreshing()
         }
@@ -48,12 +51,12 @@ final class ClassDetailsViewController: UITableViewController {
 // MARK: - Table View Data Source
 extension ClassDetailsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.state.students?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = "Student name"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! StudentCell
+        cell.student = viewModel.state.students?[indexPath.row]
         return cell
     }
 }

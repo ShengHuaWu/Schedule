@@ -35,7 +35,6 @@ final class ClassDetailsViewModel {
         let classDetailsQuery = ClassDetailsQuery(classId: classID)
         apollo.fetch(query: classDetailsQuery) { (result, error) in
             guard let classDetailsWithStudents = result?.data?.class?.fragments.classDetailsWithStudents else { return }
-            print(classDetailsWithStudents)
             
             self.state = .normal(classDetailsWithStudents)
         }

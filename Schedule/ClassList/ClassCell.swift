@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClassCell: UITableViewCell {
+final class ClassCell: UITableViewCell {
     // MARK: Properties
     var classDetails: ClassDetails! {
         didSet {
