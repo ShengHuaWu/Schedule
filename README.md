@@ -17,12 +17,14 @@ For example, I have the following two endpoints:
 1. /classes: Returns a list of classes.
 2. /classes/id/students: Returns a list of students who attend this class.
 
-Now, if I would like to display a list of all classes and three students who attend this class. There are two options:
+Now, if I would like to display a list of all classes and two students who attend this class. There are two options:
 
-1. Modify the existing API so the response contains three students' information within each class.
+1. Modify the existing API so the response contains two students' information within each class.
 2. Call /classes/id/students multiple times in order to obtain the information I want.
 
 Neither of them is a good solution because it will be difficult to scale in the future.
+However, I am able to simply specify my data requirements in a single request with GraphQL.
+The response will contain an array of classes as well as two students.
 
 ### Prerequisite
 1. Installation
