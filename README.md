@@ -6,7 +6,7 @@ This makes me really curious about what's GraphQL and how can it achieve.
 [GraphQL](http://graphql.org) is a new API design paradigm open-sourced by Facebook in 2015 but has been powering their mobile apps since 2012.
 It eliminates many of the inefficiencies with today’s REST API.
 In contrast to REST, GraphQL APIs only expose a single endpoint and the consumer of the API can specify precisely what data they need.
-In iOS development, we can take the advantages of [Apollo iOS client](https://github.com/apollographql/apollo-ios) to execute queries and mutations against a GraphQL server and returns results as query-specific Swift types.
+In iOS development, we can take the advantages of the [Apollo iOS client](https://github.com/apollographql/apollo-ios) to execute queries and mutations against a GraphQL server and returns results as query-specific Swift types.
 This means you don’t have to deal with parsing JSON, or passing around dictionaries and making clients cast values to the right type manually.
 You also don't have to write model types yourself, because these are generated from the GraphQL definitions your UI uses.
 
@@ -27,9 +27,90 @@ However, I am able to simply specify my data requirements in a single request wi
 The response will contain an array of classes as well as two students.
 
 ### Prerequisite
-1. Installation
-2. Seed data in playground
-3. Dependency management
+In this article, I would like to implement a very simple app which displays a list of classes as well as the teacher and the students in that class.
+However, there are still several things should be done before we start.
+First of all, I need to have a GraphQL server and [Graphcool](https://www.graph.cool) is a perfect choice.
+Visit the website and follow the instructions to create a project called Schedule. Add the following code into the Graphcool Console to create the necessary schema.
+```
+type Class implements Node {
+  id: ID! @isUnique
+  title: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  teacher: Teacher @relation(name: "Teacher")
+  students: [Student!]! @relation(name: "Students")
+}
+
+type Teacher implements Node {
+  id: ID! @isUnique
+  name: String!
+  class: Class @relation(name: "Teacher")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Student implements Node {
+  id: ID! @isUnique
+  name: String!
+  class: Class @relation(name: "Students")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+```
+Remember to save the Simple API for later usage.
+
+![SimpleAPI](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/SimpleAPI.png)
+
+Since I only allow my app to query the data from my server, I need some initial data before implementing the app.
+Copy and paste the Simple API into the address bar of any browser.
+This will open the GraphQL Playground and it allows me to create the initial data.
+Write the following three functions and use the play button to create classes, teachers, and students.
+```
+mutation createClass {
+  createClass(title: "Class_Title") {
+    id
+  }
+}
+
+mutation createStudent {
+  createStudent(name: "Student_Name") {
+    id
+  }
+}
+
+mutation createTeacher {
+  createTeacher(name: "Teacher_Name") {
+    id
+  }
+}
+```
+
+![PlayButton](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/PlayButton.png)
+
+Next thing to do is to configure Xcode and set up the Apollo iOS client.
+As mentioned before, the Apollo iOS client features static type generation.
+This means that I don’t have to write the model types.
+Instead, the Apollo iOS client uses the information from my GraphQL queries to generate the Swift types.
+However, I have to go through some configuration steps at first.
+Create a new Xcode project called Schedule and install the Apollo iOS client via Carthage.
+After that, Install apollo-codegen by typing `npm install -g apollo-codegen` in my Terminal.
+Then, create a New Run Script Phase in the Schedule target and copy the following code snippet into the field.
+```
+APOLLO_FRAMEWORK_PATH="$(eval find $FRAMEWORK_SEARCH_PATHS -name "Apollo.framework" -maxdepth 1)"
+
+if [ -z "$APOLLO_FRAMEWORK_PATH" ]; then
+echo "error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project."
+exit 1
+fi
+
+cd "${SRCROOT}/${TARGET_NAME}"
+$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift
+```
+Remember to drag and drop the build phase to be above the Compile Sources.
+
+![BuildPhase](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/BuildPhase.png)
+
+The final step is to generate the `schema.json` file via typing `apollo-codegen download-schema My_Simple_API --output schema.json` in the Terminal and move the `schema.json` file into the directory where `AppDelegate.swift` is located.
 
 ### Implementation
 1. Class & metadata
