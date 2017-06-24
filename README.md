@@ -138,7 +138,88 @@ Remember to drag and drop the build phase to be above the Compile Sources.
 The final step is to generate the `schema.json` file via typing `apollo-codegen download-schema My_Simple_API --output schema.json` in the Terminal and move the `schema.json` file into the directory where `AppDelegate.swift` is located.
 
 ### Implementation
-1. Class & metadata
-2. Teacher & students
+After the long setup procedure, let's start to write some code.
+First of all, instantiate the `ApolloClient` within the `AppDelegate.swift` file.
+```
+let graphQLEndpoint = "My_Simple_API"
+let apollo = ApolloClient(url: URL(string: graphQLEndpoint)!)
+```
+After that, create an empty file in the project, name it `ClassList.graphql`, and add the following code into the file in order to define the query of a list of classes.
+```
+fragment TeacherDetails on Teacher {
+    id
+    name
+}
+
+fragment ClassDetails on Class {
+    id
+    title
+    teacher {
+        ...TeacherDetails
+    }
+    _studentsMeta {
+        count
+    }
+}
+
+query AllClasses {
+    allClasses {
+        ...ClassDetails
+    }
+}
+```
+Then, build the project and `apollo-codegen` will find this code and generate a Swift representation.
+The first time `apollo-codegen` runs, it creates a new file in the root directory of the project named `API.swift`.
+All subsequent invocations will just update the existing file.
+The generated `API.swift` file is located in the root directory of the project, but it is still necessary to add it to the project.
+Drag and drop it into the project and make sure to uncheck the Copy items if needed checkbox.
+
+![APIFile](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/BuildPhase.png)
+
+The `API.swift` file contains the `AllClassesQuery` class and its corresponding structs. Now, I am able to leverage the `ApolloClient` to fetch the class list as the following.
+```
+let allClassesQuery = AllClassesQuery()
+apollo.fetch(query: allClassesQuery) { (result, error) in
+    guard let classes = result?.data?.allClasses else { return }
+
+    let classDetails = classes.map { $0.fragments.classDetails }
+    // ...
+}
+```
+The next step is to create `ClassDetails.graphql` file, in order to fetch the teacher and students in each class.
+Add the following code into the `ClassDetails.graphql` file.
+```
+fragment StudentDetails on Student {
+    id
+    name
+}
+
+fragment ClassDetailsWithStudents on Class {
+    id
+    title
+    teacher {
+        ...TeacherDetails
+    }
+    students {
+        ...StudentDetails
+    }
+}
+
+query ClassDetails($classID: ID!) {
+    class: Class(id: $classID) {
+        ...ClassDetailsWithStudents
+    }
+}
+```
+After building the project, the `ClassDetailsQuery` class and its corresponding structs will be generated, and I can take the similar approach to fetch the teacher and students information as well.
+```
+let classDetailsQuery = ClassDetailsQuery(classId: classID)
+apollo.fetch(query: classDetailsQuery) { (result, error) in
+    guard let classDetailsWithStudents = result?.data?.class?.fragments.classDetailsWithStudents else { return }
+
+    // ...
+}
+```
 
 ### Conclusion
+[Here](https://github.com/ShengHuaWu/Schedule) is the entire sample project.
