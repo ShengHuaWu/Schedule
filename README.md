@@ -94,10 +94,10 @@ mutation attendClass($classID: ID!, $studentID: ID!) {
     classClass {
       id
       students {
-				id
+        id
       }
     }
-	}
+  }
 }
 
 mutation teachClass($classID: ID!, $teacherID: ID!) {
@@ -106,8 +106,8 @@ mutation teachClass($classID: ID!, $teacherID: ID!) {
       id
       teacher {
         id
-			}
-		}
+      }
+    }
   }
 }
 ```
@@ -174,7 +174,7 @@ All subsequent invocations will just update the existing file.
 The generated `API.swift` file is located in the root directory of the project, but it is still necessary to add it to the project.
 Drag and drop it into the project and make sure to uncheck the Copy items if needed checkbox.
 
-![APIFile](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/BuildPhase.png)
+![APIFile](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/APIFile.png)
 
 The `API.swift` file contains the `AllClassesQuery` class and its corresponding structs. Now, I am able to leverage the `ApolloClient` to fetch the class list as the following.
 ```
