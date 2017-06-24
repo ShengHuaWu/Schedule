@@ -29,8 +29,9 @@ The response will contain an array of classes as well as two students.
 ### Prerequisite
 In this article, I would like to implement a very simple app which displays a list of classes as well as the teacher and the students in that class.
 However, there are still several things should be done before we start.
-First of all, I need to have a GraphQL server and [Graphcool](https://www.graph.cool) is a perfect choice.
-Visit the website and follow the instructions to create a project called Schedule. Add the following code into the Graphcool Console to create the necessary schema.
+
+First of all, it is necessary to have a GraphQL server and [Graphcool](https://www.graph.cool) is a perfect choice.
+Visit the website and follow the instructions to create a project called Schedule. Then, add the following code into the Graphcool Console to create the necessary schema.
 ```
 type Class implements Node {
   id: ID! @isUnique
@@ -62,8 +63,7 @@ Remember to save the Simple API for later usage.
 ![SimpleAPI](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/SimpleAPI.png)
 
 Since I only allow my app to query the data from my server, I need some initial data before implementing the app.
-Copy and paste the Simple API into the address bar of any browser.
-This will open the GraphQL Playground and it allows me to create the initial data.
+Copy and paste the Simple API into the address bar of any browser and this will open the GraphQL Playground and it allows me to create the initial data.
 Write the following three functions and use the play button to create classes, teachers, and students.
 ```
 mutation createClass {
@@ -86,6 +86,31 @@ mutation createTeacher {
 ```
 
 ![PlayButton](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/PlayButton.png)
+
+Then, use the Playground again to add the teacher and the students into classes via the following functions.
+```
+mutation attendClass($classID: ID!, $studentID: ID!) {
+  addToStudents(classClassId: $classID, studentsStudentId: $studentID) {
+    classClass {
+      id
+      students {
+				id
+      }
+    }
+	}
+}
+
+mutation teachClass($classID: ID!, $teacherID: ID!) {
+  setTeacher(classClassId: $classID, teacherTeacherId: $teacherID) {
+    classClass {
+      id
+      teacher {
+        id
+			}
+		}
+  }
+}
+```
 
 Next thing to do is to configure Xcode and set up the Apollo iOS client.
 As mentioned before, the Apollo iOS client features static type generation.
