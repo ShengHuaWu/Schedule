@@ -1,6 +1,6 @@
 ## First Try at GraphQL & Apollo
 Recently, I saw a news said that [GitHub migrated their API from REST to GraphQL](https://developer.github.com/v4/guides/migrating-from-rest/).
-This makes me really curious about what's GraphQL and how can it achieve.
+This makes me really curious about what's GraphQL and what kind of functionality it provides.
 
 ### Introduction
 [GraphQL](http://graphql.org) is a new API design paradigm open-sourced by Facebook in 2015 but has been powering their mobile apps since 2012.
@@ -27,11 +27,11 @@ However, I am able to simply specify my data requirements in a single request wi
 The response will contain an array of classes as well as two students.
 
 ### Prerequisite
-In this article, I would like to implement a very simple app which displays a list of classes as well as the teacher and the students in that class.
+In this article, I want to implement a very simple app which displays a list of classes as well as the teacher and the students in that class.
 However, there are still several things should be done before we start.
 
 First of all, it is necessary to have a GraphQL server and [Graphcool](https://www.graph.cool) is a perfect choice.
-Visit the website and follow the instructions to create a project called Schedule. Then, add the following code into the Graphcool Console to create the necessary schema.
+Visit the website and follow the instructions to create a project called Schedule. Besides, add the following code into the Graphcool Console to create the necessary schema.
 ```
 type Class implements Node {
   id: ID! @isUnique
@@ -87,7 +87,7 @@ mutation createTeacher {
 
 ![PlayButton](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/PlayButton.png)
 
-Then, use the Playground again to add the teacher and the students into classes via the following functions.
+Then, inside the Playground again, write the following functions in order to add the teacher and the students into classes.
 ```
 mutation attendClass($classID: ID!, $studentID: ID!) {
   addToStudents(classClassId: $classID, studentsStudentId: $studentID) {
@@ -118,7 +118,7 @@ This means that I don’t have to write the model types.
 Instead, the Apollo iOS client uses the information from my GraphQL queries to generate the Swift types.
 However, I have to go through some configuration steps at first.
 Create a new Xcode project called Schedule and install the Apollo iOS client via Carthage.
-After that, Install apollo-codegen by typing `npm install -g apollo-codegen` in my Terminal.
+After that, Install `apollo-codegen` by typing `npm install -g apollo-codegen` in the Terminal.
 Then, create a New Run Script Phase in the Schedule target and copy the following code snippet into the field.
 ```
 APOLLO_FRAMEWORK_PATH="$(eval find $FRAMEWORK_SEARCH_PATHS -name "Apollo.framework" -maxdepth 1)"
@@ -131,20 +131,22 @@ fi
 cd "${SRCROOT}/${TARGET_NAME}"
 $APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift
 ```
-Remember to drag and drop the build phase to be above the Compile Sources.
+In addition, remember to drag and drop the build phase to be above the Compile Sources.
 
 ![BuildPhase](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/BuildPhase.png)
 
 The final step is to generate the `schema.json` file via typing `apollo-codegen download-schema My_Simple_API --output schema.json` in the Terminal and move the `schema.json` file into the directory where `AppDelegate.swift` is located.
 
+![Schema](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/Schema.png)
+
 ### Implementation
 After the long setup procedure, let's start to write some code.
-First of all, instantiate the `ApolloClient` within the `AppDelegate.swift` file.
+First, instantiate the `ApolloClient` within the `AppDelegate.swift` file.
 ```
 let graphQLEndpoint = "My_Simple_API"
 let apollo = ApolloClient(url: URL(string: graphQLEndpoint)!)
 ```
-After that, create an empty file in the project, name it `ClassList.graphql`, and add the following code into the file in order to define the query of a list of classes.
+Furthermore, create an empty file in the project, name it `ClassList.graphql`, and add the following code into the file in order to define the query of a list of classes.
 ```
 fragment TeacherDetails on Teacher {
     id
@@ -176,7 +178,7 @@ Drag and drop it into the project and make sure to uncheck the Copy items if nee
 
 ![APIFile](https://github.com/ShengHuaWu/Schedule/blob/master/Resources/APIFile.png)
 
-The `API.swift` file contains the `AllClassesQuery` class and its corresponding structs. Now, I am able to leverage the `ApolloClient` to fetch the class list as the following.
+The `API.swift` file contains the `AllClassesQuery` class and its corresponding structs. Now, I am able to leverage the `ApolloClient` to fetch the class list via the following.
 ```
 let allClassesQuery = AllClassesQuery()
 apollo.fetch(query: allClassesQuery) { (result, error) in
@@ -211,7 +213,7 @@ query ClassDetails($classID: ID!) {
     }
 }
 ```
-After building the project, the `ClassDetailsQuery` class and its corresponding structs will be generated, and I can take the similar approach to fetch the teacher and students information as well.
+After building the project, the `ClassDetailsQuery` class and its corresponding structs will be generated, and I can take the similar approach to fetch the teacher and students information.
 ```
 let classDetailsQuery = ClassDetailsQuery(classId: classID)
 apollo.fetch(query: classDetailsQuery) { (result, error) in
@@ -223,3 +225,10 @@ apollo.fetch(query: classDetailsQuery) { (result, error) in
 
 ### Conclusion
 [Here](https://github.com/ShengHuaWu/Schedule) is the entire sample project.
+
+Although it seems to have a long setup process, a lot of work is about the backend server configurations.
+Thus, for iOS developers, we should focus on how to write the corresponding `.graphql` files and how to leverage the Apollo iOS Client.
+More importantly, the Apollo iOS Client provides the `watch` function and it gets notified whenever any of the data changes in the local cache.
+Hence, it can be used to take care of updating the UI.
+Moreover, more great contents and functionalities can be found on the [Apollo](https://dev-blog.apollodata.com) and [Graphcool](https://www.graph.cool/blog/) blogs.
+Any comment and feedback are welcome, so please share your thoughts. Thank you!
